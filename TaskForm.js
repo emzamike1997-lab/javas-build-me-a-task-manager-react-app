@@ -1,19 +1,15 @@
-This component will render a form where users can input new tasks.
+This component will render a form to add new tasks. It will receive an addTask function as a prop.
 
 ```javascript
 import React, { useState } from 'react';
 
 function TaskForm({ addTask }) {
   const [newTask, setNewTask] = useState('');
-  const [taskId, setTaskId] = useState(1);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (newTask) {
-      addTask({ id: taskId, task: newTask });
-      setTaskId(taskId + 1);
-      setNewTask('');
-    }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    addTask(newTask);
+    setNewTask('');
   };
 
   return (
@@ -21,8 +17,8 @@ function TaskForm({ addTask }) {
       <input
         type="text"
         value={newTask}
-        onChange={(e) => setNewTask(e.target.value)}
-        placeholder="Enter new task"
+        onChange={(event) => setNewTask(event.target.value)}
+        placeholder="Add new task"
       />
       <button type="submit">Add Task</button>
     </form>
