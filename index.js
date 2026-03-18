@@ -1,4 +1,4 @@
-This is the entry point of the application.
+This is the entry point of our application. We will render the TaskManager component here.
 
 ```javascript
 import React from 'react';
