@@ -1,24 +1,25 @@
 import React, { useState } from 'react'
 
 function TaskForm({ addTask }) {
-    const [title, setTitle] = useState('')
+  const [title, setTitle] = useState('')
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        const newTask = { id: Date.now(), title }
-        addTask(newTask)
-        setTitle('')
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    addTask({ id: Date.now(), title })
+    setTitle('')
+  }
 
-    return (
-        <div className="task-form">
-            <h2>Add Task</h2>
-            <form onSubmit={handleSubmit}>
-                <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Task title" />
-                <button type="submit">Add Task</button>
-            </form>
-        </div>
-    )
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        placeholder="Task title"
+      />
+      <button type="submit">Add Task</button>
+    </form>
+  )
 }
 
 export default TaskForm
